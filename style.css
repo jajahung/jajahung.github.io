@@ -1,0 +1,46 @@
+html {
+  height: 100%;
+  width: 100%;
+  background-color: #e6f7ff; /* Light blue background */
+}
+
+#about .section-box {
+  border: none; /* No border for "關於我" */
+}
+
+#about p {
+  text-align: left;
+  font-size: 18px; /* Larger font size */
+}
+
+.section-box {
+  border: 2px solid #0097FB; 
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+
+  /* Bouncing effect only on hover */
+  transition: transform 0.2s;
+}
+
+.section-box:hover {
+  transform: translateY(-10px);
+}
+
+h3 {
+  color: #005f99; /* Darker blue for headings */
+  padding-left: 5px; /* Padding to simulate bullet point */
+}
+
+.navbar {
+  background-color: #b3e0ff !important; /* Light blue navbar */
+}
+
+.profile-picture {
+  width: 150px; /* Adjusted to a smaller size */
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  float: right;
+  margin: 20px;
+}
