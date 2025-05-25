@@ -1,117 +1,200 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Portfolio</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link href="style.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>個人網頁 | 洪翊嘉</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Welcome to My Portfolio</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#about">關於我</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#work">社團/活動經驗</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#work">幹部經驗</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#work">工作經驗</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#work">研究經驗</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#work">資訊能力</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#work">商管能力</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#work">語言能力</a>
-        </li>
-      </ul>
+<!-- 導覽列 -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">洪翊嘉</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">關於我</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#assignment">AI作品集</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#member">幹部經驗</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#club">社團/活動經驗</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#research">研究經驗</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#lang">語言能力</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </nav>
+</nav>
 
+<!-- 頁首 -->
+<header>
+    <div class="container">
+        <img src="..\attached_assets\證件照_小.jpg" alt="個人照片" class="profile-img mb-4">
+        <h1>大家好，我是洪翊嘉 Hung, Yi-Jia！</h1>
+        <p class="lead">是一位熱愛跨領域學習與擁抱世界的學生😊</p>
+    </div>
+</header>
 
+<!-- 關於我 -->
+<section id="about" class="bg-light">
+    <div class="container">
+        <h1 class="section-title">關於我</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <p class = "lead">目前就讀國立台灣科技大學管理學士班，並輔修企管系，對國際企業管理、資料分析與AI應用特別有興趣。<br>
+                    我具備良好的英文能力與跨部門合作經驗，期望未來能發揮專業於國際商業領域！</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-  <div class="container mt-5">
+  <!-- AI作品集 -->
+<section id="assignment" class="bg-light">
+    <div class="container">
+        <h1 class="section-title">AI作品集</h1>
+        <div class = "row justify-content-center">
+            <div class = "col-md-8">
+                <p class = "lead">只需運用Python和生成式AI等工具就能呈現日常處處可見的超實用功能！<br>
+                    將Python和AI的潛力發揮淋漓盡致！<br>
+                    想知道Python和AI能擦出什麼火花嗎？趕快來一探究竟吧！</p>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-6 portfolio-item">
+            <img src="..\attached_assets\python.png" alt="Python" class="img-fluid">
+            <h4>課程成果</h4>
+            <p class = "fs-5">Opencv、MediaPipe、生成式AI</p>
+            <a href="assignment.html" target="_blank" class="btn btn-outline-primary mt-2">查看更多</a>
+        </div>
+        <div class="col-md-6 portfolio-item">
+            <img src="..\attached_assets\robotic-hand.png" alt="ai應用" class="img-fluid">
+            <h4>AI應用</h4>
+            <p class = "fs-5">AI體感穿搭與妝容推薦平台</p>
+            <a href="report3.html" target="_blank" class="btn btn-outline-primary mt-2">查看更多</a>
+        </div>
+    </div>
+</section>
 
-    <section id="about" class="mb-5">
-      <div class="section-box">
-        <img src="attached_assets/證件照_小.jpg" alt="Personal Photo" class="profile-picture">
-        <h2>關於我 😊</h2>
-        <p>我是洪翊嘉，就讀國立台灣科技大學管理學士班，同時輔修企管及資管系。我喜愛與人互動合作、喜歡英文，也會勇於接受挑戰並實現理想。</p>
-      </div>
-    </section>
+<!-- 幹部經驗 -->
+<section id="member" class="bg-light">
+    <div class="container">
+        <h1 class="section-title">幹部經驗</h1>
+    </div>
+    <div class="row g-6">
+        <div class="col-md-6 portfolio-item">
+            <img src="..\attached_assets\marketing.png" alt="公關" class="img-fluid">
+            <h4 class="mt-2">2021~2024年</h4>
+            <p class = "fs-5">國立台灣科技大學管理學士班班級幹部「公關」</p>
+        </div>
+        <div class="col-md-6 portfolio-item">
+            <img src="..\attached_assets\professional-development.png" alt="系學會" class="img-fluid">
+            <h4 class="mt-2">2022~2023年</h4>
+            <p class = "fs-5">國立台灣科技大學管理學士班第十七屆學生會「執行秘書」<br>
+                管理學士班羽球隊「副隊長」</p>
+        </div>
+    </div>
+</section>
 
-    <section id="work" class="mb-5">
-      <div class="section-box">
-        <h3>社團/活動參與</h3>
-        <p>2021~2024年：國立台灣科技大學管理學士班羽球隊<br>
-          2023年：國立台灣科技大學電子系電子營<br>
-          2022~2023年：國立台灣科技大學管理學士班第十七屆學生會<br>
-          2021~2022年：數據分析社、讀書會</p>
-      </div>
-      <div class="section-box">
-        <h3>幹部經驗</h3>
-        <p>2021~2024年：國立台灣科技大學管理學士班班級幹部「公關」<br>
-          2022~2023年：國立台灣科技大學管理學士班第十七屆學生會「執行秘書」<br>
-          管理學士班羽球隊「副隊長」</p>
-      </div>
-      <div class="section-box">
-        <h3>工作經驗</h3>
-        <p>2022年7月~8月：國泰世華銀行中區存匯作業短期工讀生<br>
-          2024年7月~8月：台中市政府大專青年學生公部門暑期工讀計畫人員，在經濟發展局工商登記科任職</p>
-      </div>
-      <div class="section-box">
-        <h3>研究經驗</h3>
-        <p>Hung, Y.J., Huang, C.H. & Tran, H. T. T. (2023). Investigating the Evolutionary Trajectory of AI Banking: A
+<!-- 社團活動經驗 -->
+<section id="club" class="bg-light">
+    <div class="container">
+        <h1 class="section-title">社團/活動經驗</h1>
+    </div>
+    <div class="row g-4">
+        <div class="col-md-4 portfolio-item">
+            <img src="..\attached_assets\game.png" alt="作品1" class="img-fluid">
+            <h4 class="mt-2">2021~2024年</h4>
+            <p class = "fs-5">國立台灣科技大學管理學士班羽球隊</p>
+        </div>
+        <div class="col-md-4 portfolio-item">
+            <img src="..\attached_assets\excursion.png" alt="作品2" class="img-fluid">
+            <h4 class="mt-2">2023年</h4>
+            <p class = "fs-5">國立台灣科技大學電子系電子營</p>
+        </div>
+        <div class="col-md-4 portfolio-item">
+            <img src="..\attached_assets\public-associations.png" alt="作品2" class="img-fluid">
+            <h4 class="mt-2">2022~2023年</h4>
+            <p class = "fs-5">國立台灣科技大學管理學士班第十七屆學生會</p>
+        </div>
+    </div>
+</section>
+
+<!-- 研究經驗 -->
+<section id="research" class="bg-light">
+    <div class="container">
+        <h1 class="section-title">研究經驗</h1>
+        <div class="row g-4">
+            <div class="col-md-10 portfolio-item">
+                <img src="..\attached_assets\sheet.png" alt="作品1" class="img-fluid">
+                <h3 class="mt-2">ICEB 2023</h3>
+                <p class = "fs-5">Hung, Y.J., Huang, C.H. & Tran, H. T. T. (2023). Investigating the Evolutionary Trajectory of AI Banking: A
           Main Path Analysis. In Li, E.Y. et al. (Eds.) Proceedings of The International Conference on Electronic
           Business, Volume 23 (pp. xxx-xxx). ICEB’23, Chiayi, Taiwan, October 19-23, 2023</p>
-      </div>
-      <div class="section-box">
-        <h3>資訊能力</h3>
-        <p>Journey to Cloud: Envisioning Your Solution (Issued by IBM)<br>
-          AWS Educate: Getting Started with Compute<br>
-          Build Your Own Chatbot - Level 1 (Issued by IBM)</p>
-      </div>
-      <div class="section-box">
-        <h3>商管能力</h3>
-        <p>文書處理 (Word, Excel)<br>
-          資料視覺化</p>
-      </div>
-      <div class="section-box">
-        <h3>語言能力</h3>
-        <p>多益（TOEIC）<br>
-          聽讀：900/990分<br>
-          口說：130/200分<br>
-          寫作：160/200分</p>
-      </div>
-    </section>
+            </div>
+        </div>
+    </div>
+</section>
 
-  </div>
+<!-- 語言能力 -->
+<section id="lang" class="bg-light">
+    <div class="container">
+        <h1 class="section-title">語言能力</h1>
+        <div class="row g-4">
+            <div class="col-md-10 portfolio-item">
+                <img src="..\attached_assets\eng.png" alt="作品1" class="img-fluid">
+                <h3 class="mt-2">多益TOEIC</h3>
+                <p class = "fs-5">聽讀：900/990分<br>
+                    口說：130/200分<br>
+                    寫作：160/200分</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-  <!-- Bootstrap JS and dependencies -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="script.js"></script>
+<!-- 聯絡我 -->
+<section id="contact" class="bg-light">
+    <div class="container">
+        <h2 class="section-title">聯絡我</h2>
+        <form>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control" placeholder="您的姓名">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <input type="email" class="form-control" placeholder="您的 Email">
+                </div>
+            </div>
+            <div class="mb-3">
+                <textarea class="form-control" rows="5" placeholder="您的訊息"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">送出</button>
+        </form>
+    </div>
+</section>
+
+<!-- 頁尾 -->
+<footer>
+    <div class="container">
+        <p>&copy; 2025 洪翊嘉 | 個人網頁</p>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

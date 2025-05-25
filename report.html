@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>AI 體感穿搭與妝容推薦 Demo</title>
+	<style>
+		body {
+			background-color: #e0f7fa;
+			font-family: Arial, sans-serif;
+			text-align: center;
+			margin: 0;
+		}
+		header, footer {
+			background-color: #00acc1;
+			color: white;
+			padding: 1rem;
+		}
+		h1 {
+			margin-top: 1rem;
+			color: white;
+		}
+		.feature {
+			margin: 2rem auto;
+			max-width: 800px;
+			background: white;
+			padding: 1.5rem;
+			border-radius: 16px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+		video, canvas {
+			max-width: 90%;
+			border: 2px solid #00acc1;
+			border-radius: 8px;
+		}
+		.share-buttons img {
+			width: 32px;
+			margin: 0 0.5rem;
+			cursor: pointer;
+		}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+</head>
+<body>
+	<header>
+		<h1>AI 體感互動時尚推薦平台</h1>
+	</header>
+
+	<div class="feature">
+		<h2>🧠 臉部分析推薦妝感風格</h2>
+		<p>系統將分析你的臉型（如鵝蛋臉、圓臉、長臉等）、眼距與膚色，推薦最適合的妝容風格（如自然、甜美、銳利風），並搭配適合的髮型設計。</p>
+		<video id="faceVideo" autoplay muted playsinline></video>
+		<canvas id="faceCanvas"></canvas>
+        <div id="faceStatus">🔍 請將臉對準鏡頭進行分析...</div>
+        <pre id="faceResult" style="text-align:left; padding:1rem; background:#f1f1f1; border-radius:8px;"></pre>
+		<div class="share-buttons">
+			<img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook 分享" title="分享到 Facebook" />
+			<img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram 分享" title="分享到 Instagram" />
+		</div>
+	</div>
+
+	<div class="feature">
+		<h2>💃 全身骨架分析穿搭建議</h2>
+		<p>透過骨架偵測技術辨識你的身形比例（如五五身、四六身）、肩寬、腿長等，並推薦最適合你的服飾剪裁（如寬鬆、修身）、搭配風格與顏色。</p>
+		<video id="poseVideo" autoplay muted playsinline></video>
+		<canvas id="poseCanvas"></canvas>
+        <div id="poseResult" style="margin-top: 1rem; color: #00796b;"></div>
+		<div class="share-buttons">
+			<img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook 分享" title="分享到 Facebook" />
+			<img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram 分享" title="分享到 Instagram" />
+		</div>
+	</div>
+
+	<footer>
+		<p>&copy; 2025 AI Style Recommender | Designed by 洪翊嘉</p>
+	</footer>
+
+	<script>
+		const faceVideo = document.getElementById('faceVideo');
+		const faceCanvas = document.getElementById('faceCanvas');
+		const poseVideo = document.getElementById('poseVideo');
+		const poseCanvas = document.getElementById('poseCanvas');
+
+		const faceMesh = new FaceMesh({
+			locateFile: file => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`
+		});
+		faceMesh.setOptions({
+			maxNumFaces: 1,
+			refineLandmarks: true,
+			minDetectionConfidence: 0.5,
+			minTrackingConfidence: 0.5
+		});
+
+		faceMesh.onResults(results => {
+	        const ctx = faceCanvas.getContext('2d');
+	        if (faceVideo.readyState >= 2) {
+		        faceCanvas.width = faceVideo.videoWidth;
+		        faceCanvas.height = faceVideo.videoHeight;
+	        }
+	        ctx.clearRect(0, 0, faceCanvas.width, faceCanvas.height);
+	        if (results.multiFaceLandmarks) {
+	            document.getElementById("faceStatus").innerText = "✅ 偵測到臉部，分析中...";
+	            // ...繪圖邏輯
+            } else {
+	            document.getElementById("faceStatus").innerText = "🔍 無法偵測臉部，請靠近一點或調整角度";
+            }
+
+	        let output = '';
+	        if (results.multiFaceLandmarks) {
+		        for (const landmarks of results.multiFaceLandmarks) {
+			        for (const point of landmarks) {
+				        ctx.beginPath();
+				        ctx.arc(point.x * faceCanvas.width, point.y * faceCanvas.height, 2, 0, 2 * Math.PI);
+				        ctx.fillStyle = '#00acc1';
+				        ctx.fill();
+			        }
+
+			        // 臉型分析
+			        const jawLeft = landmarks[234];
+			        const jawRight = landmarks[454];
+			        const chin = landmarks[152];
+			        const forehead = landmarks[10];
+			        const width = Math.abs(jawRight.x - jawLeft.x);
+			        const height = Math.abs(chin.y - forehead.y);
+			        const ratio = height / width;
+
+			        if (ratio > 1.35) {
+				        output += '臉型：長臉，建議側分瀏海或中分修飾長度。\n';
+			        } else if (ratio < 1.1) {
+				        output += '臉型：圓臉，推薦有層次的短髮或側邊瀏海修飾。\n';
+			        } else {
+				        output += '臉型：鵝蛋臉，適合多種妝感與髮型。\n';
+			        }
+
+			        // 膚色分析
+			        const keyPoints = [landmarks[168], landmarks[6], landmarks[197]];
+			        const sampleX = keyPoints.map(p => Math.round(p.x * faceCanvas.width));
+			        const sampleY = keyPoints.map(p => Math.round(p.y * faceCanvas.height));
+
+			        const imageData = ctx.getImageData(
+				        Math.min(...sampleX),
+				        Math.min(...sampleY),
+				        Math.max(...sampleX) - Math.min(...sampleX) || 1,
+				        Math.max(...sampleY) - Math.min(...sampleY) || 1
+			        );
+			        let r = 0, g = 0, b = 0;
+			        for (let i = 0; i < imageData.data.length; i += 4) {
+				        r += imageData.data[i];
+				        g += imageData.data[i + 1];
+				        b += imageData.data[i + 2];
+			        }
+			        const pixelCount = imageData.data.length / 4;
+			        r = Math.round(r / pixelCount);
+			        g = Math.round(g / pixelCount);
+			        b = Math.round(b / pixelCount);
+
+			        // 根據 RGB 判斷冷暖調
+			        if (r > b && g > b && r - b > 20) {
+				        output += `膚色：暖調（偏黃或橄欖肌）\n妝容建議：使用珊瑚橘、橘棕、奶茶色調。\n`;
+			        } else {
+				        output += `膚色：冷調（偏白或粉膚）\n妝容建議：使用莓紅、玫瑰紫、粉裸色調。\n`;
+			        }
+		        }
+	        }
+	        document.getElementById('faceResult').innerText = output || '未偵測到臉部';
+        });
+
+		const pose = new Pose({
+			locateFile: file => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`
+		});
+
+		pose.setOptions({
+			modelComplexity: 1,
+			smoothLandmarks: true,
+			enableSegmentation: false,
+			minDetectionConfidence: 0.5,
+			minTrackingConfidence: 0.5
+		});
+
+		pose.onResults(results => {
+	        const ctx = poseCanvas.getContext('2d');
+	        if (poseVideo.readyState >= 2) {
+		        poseCanvas.width = poseVideo.videoWidth;
+		        poseCanvas.height = poseVideo.videoHeight;
+	        }
+	        ctx.clearRect(0, 0, poseCanvas.width, poseCanvas.height);
+	        let output = '';
+	        if (results.poseLandmarks) {
+		        const lm = results.poseLandmarks;
+		        const connect = (i, j) => {
+			        ctx.beginPath();
+			        ctx.moveTo(lm[i].x * poseCanvas.width, lm[i].y * poseCanvas.height);
+			        ctx.lineTo(lm[j].x * poseCanvas.width, lm[j].y * poseCanvas.height);
+			        ctx.strokeStyle = '#ffccbc';
+			        ctx.lineWidth = 2;
+			        ctx.stroke();
+		        };
+		        // 繪製關節點
+		        for (const point of lm) {
+			        ctx.beginPath();
+			        ctx.arc(point.x * poseCanvas.width, point.y * poseCanvas.height, 4, 0, 2 * Math.PI);
+			        ctx.fillStyle = '#ff7043';
+			        ctx.fill();
+		        }
+		        // 骨架連線
+		        const pairs = [
+			        [11, 13], [13, 15], // 左臂
+			        [12, 14], [14, 16], // 右臂
+			        [11, 12],           // 肩膀
+			        [11, 23], [12, 24], // 側身
+			        [23, 24],           // 骨盆
+			        [23, 25], [25, 27], // 左腿
+			        [24, 26], [26, 28]  // 右腿
+		        ];
+		        pairs.forEach(pair => connect(...pair));
+
+		        // 身形分析
+		        const shoulderWidth = Math.abs(lm[12].x - lm[11].x);
+		        const torsoLength = Math.abs(lm[24].y - lm[12].y);
+		        const legLength = (Math.abs(lm[28].y - lm[24].y) + Math.abs(lm[27].y - lm[23].y)) / 2;
+		        const ratio = torsoLength / legLength;
+
+		        if (ratio > 0.6) {
+			        output += '身形：五五身，建議穿著高腰褲、上短下長。\n';
+		        } else {
+			        output += '身形：四六身，建議強調腰線與上身搭配。\n';
+		        }
+		        if (shoulderWidth > 0.15) {
+			        output += '肩型：寬肩，適合V領、落肩設計。\n';
+		        } else {
+			        output += '肩型：窄肩，適合挺版上衣或泡袖設計。\n';
+		        }
+	        }
+	        document.getElementById('poseResult').innerText = output || '未偵測到骨架';
+        });
+
+
+		const cameraFace = new Camera(faceVideo, {
+			onFrame: async () => {
+		        if (faceVideo.readyState >= 2) {
+			        await faceMesh.send({ image: faceVideo });
+		        }
+	        },
+			width: 640,
+			height: 480
+		});
+		cameraFace.start();
+
+		const cameraPose = new Camera(poseVideo, {
+			onFrame: async () => {
+		        if (poseVideo.readyState >= 2) {
+			        await pose.send({ image: poseVideo });
+		        }
+	        },
+			width: 640,
+			height: 480
+		});
+		cameraPose.start();
+	</script>
+</body>
+</html>

@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>AI課程成果作品集 | 洪翊嘉</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-light">
+	<!-- 導覽列 -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="index.html">洪翊嘉</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="index.html#about">關於我</a></li>
+					<li class="nav-item"><a class="nav-link" href="index.html#assignment">AI作品集</a></li>
+					<li class="nav-item"><a class="nav-link" href="index.html#member">幹部經驗</a></li>
+					<li class="nav-item"><a class="nav-link" href="index.html#club">社團/活動經驗</a></li>
+					<li class="nav-item"><a class="nav-link" href="index.html#research">研究經驗</a></li>
+					<li class="nav-item"><a class="nav-link" href="index.html#lang">語言能力</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+    <header>
+            <div class="container">
+                <h1>AI課程成果作品集</h1>
+            </div>
+    </header>
+	<!-- 主內容 -->
+	<div class="container mt-4">
+		<!-- 篩選按鈕 -->
+		<div class="d-flex justify-content-center flex-wrap gap-2 mb-4">
+			<button class="btn btn-outline-dark filter-btn" data-filter="opencv">OpenCV</button>
+			<button class="btn btn-outline-dark filter-btn" data-filter="mp">MediaPipe</button>
+			<button class="btn btn-outline-dark filter-btn" data-filter="tm">Teachable Machine</button>
+			<button class="btn btn-outline-dark filter-btn" data-filter="stream">Streamlit</button>
+			<button class="btn btn-outline-dark filter-btn" data-filter="sllm">Streamlit+LLM</button>
+			<button class="btn btn-outline-dark filter-btn" data-filter="ai">生成式AI</button>
+			<button class="btn btn-outline-dark filter-btn" data-filter="neo">Neo4j專案</button>
+		</div>
+
+		<!-- 卡片區塊 -->
+		<div class="row g-4">
+			<!-- OpenCV -->
+			<div class="col-12 portfolio-item" data-category="opencv">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">呈現指定圖片檔</h3>
+                        <h5 class="card-text text-muted">我們使用OpenCV套件中VideoCapture(圖片路徑)方法，並選擇呈現下方的狗狗貓貓圖！</h5>
+                        <img src="..\attached_assets\011.png" class ="main-card-img" alt="作品1" />
+                        <button class="btn btn-link p-0 toggle-btn">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <!-- 展開內容區塊 -->
+                        <div class="more-content" style="display: none;">
+                            <h5 class="card-subtitle mt-3">加深加廣時間！</h5>
+                            <div class="mb-2">
+                                <h6 class="task-title mb-1">Task 1: 使用VideoCapture(影片連結)呈現影片直播畫面</h6>
+                                <p>如下圖為呈現國道國1南 五股路段即時畫面 (影片連結：<a href="https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=13380" target="_blank">https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=13380</a>)</p>
+                                <img src="..\attached_assets\021.png" class = "card-img-right" alt="作品1" />
+                            </div>
+                            <div class="mb-2">
+                                <h6 class="task-title mb-1">Task 2: 改變圖片風格</h6>
+                                <p>首先，使用opencv中imread方法讀取照片，並使用cvtColor方法改變整張圖片顏色，這次我們將圖片加上灰底；接下來使用GaussianBlur方法設定圖片模糊程度；最後使用Canny方法設定畫出圖片中物件線條的細緻程度，並使用numpy套件中的hstack方法及vstack方法分別水平與垂直堆疊編輯後的圖片。</p>
+                                <img src="..\attached_assets\022.png" class = "card-img-right" alt="作品1" />
+                            </div>
+                            <div class="mb-2">
+                                <h6 class="task-title mb-1">Task 3: 呈現圖片特定區域</h6>
+                                <p>透過設定座標，決定指定圖片中欲呈現的區域。</p>
+                                <img src="..\attached_assets\023.png" class = "card-img-right" alt="作品1" />
+                            </div>
+                            <div class="mb-2">
+                                <h6 class="task-title mb-1">Task 4: 同時呈現一張圖及繪製多個幾何圖形與文字的畫面。</h6>
+                                <img src="..\attached_assets\024.png" class = "card-img-right" alt="作品1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="opencv">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">呈現攝影機所拍攝的即時畫面</h3>
+                        <h5 class="card-text text-muted">接下來我們使用VideoCapture(0)方法開啟裝置的攝影機，並呈現攝影機所拍攝的即時畫面。下圖為當時攝影機拍攝到的影像！</h5>
+                        <img src="..\attached_assets\012.png" class ="main-card-img" alt="作品1" />
+                        <button class="btn btn-link p-0 toggle-btn">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <!-- 展開內容區塊 -->
+                        <div class="more-content" style="display: none;">
+                            <h5 class="card-subtitle mt-3">加深加廣時間！</h5>
+                            <div class="mb-2">
+                                <h6 class="task-title mb-1">Task: 按指定按鈕擷取即時畫面</h6>
+                                <p>利用waitKey偵測使用者按下的按鈕，以此例為按下「0」時程式會截下當時攝影機拍攝到的畫面，並自動儲存於指定資料夾。</p>
+                                <img src="..\attached_assets\015.png" class = "card-img-right" alt="作品1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="opencv">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">呈現YouTube影片</h3>
+                        <h5 class="card-text text-muted">最後我們使用yt_dlp套件中的YouTubeDL方法下載YouTube影片，並使用VideoCapture(YouTube影片連結)方法播出影片。下圖為選用播放Taylor Swift – High Infidelity影片示意圖 (影片連結: <a href ="https://www.youtube.com/watch?v=-qee6dFKlw4" target="_blank">https://www.youtube.com/watch?v=-qee6dFKlw4</a>)</h5>
+                        <img src="..\attached_assets\013.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="opencv">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">物件偵測模型</h3>
+                        <h5 class="card-text text-muted">我們使用Google的teachable machine訓練物件偵測模型，在這裡我選用的物件為手機和原子筆。在建立模型前，需上傳足夠的物件圖片樣本以提高模型偵測的準確率；建立後只要將任意物件放置在攝影機前，模型就會判斷是否為被訓練的物件，並顯示為被訓練物件之可能性。<br>
+                            (網站連結: <a href ="https://teachablemachine.withgoogle.com/" target="_blank">https://teachablemachine.withgoogle.com/</a>)</h5>
+                        <img src="..\attached_assets\016.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">偵測圖片中的物件</h3>
+                        <h5 class="card-text text-muted">這次我們開始使用Google的MediaPipe之已訓練模型偵測物件。首先，使用VideoCapture讀取照片，MediaPipe便會開始偵測物件：若圖片中的物件可能性高於所設定的門檻，就會框起物件並寫出物件為何。以下圖為例，MediaPipe偵測到圖片中有貓 (cat) 和狗 (dog)的機率分別為0.64和0.89，超過所設定的門檻機率0.5，因此以紅框框起標示。</h5>
+                        <img src="..\attached_assets\031.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">動態偵測物件</h3>
+                        <h5 class="card-text text-muted">接下來我們使用MediaPipe模型動態偵測攝影機拍攝到即時影像中的物件。它可以同時偵測多個物件，如下圖偵測到人 (person)和水壺 (cup)，並以藍框框起表示。</h5>
+                        <img src="..\attached_assets\032.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">偵測影片中的物件</h3>
+                        <h5 class="card-text text-muted">最後，我們使用上回運用到的yt_dlp套件獲取YouTube直播影片，並結合MediaPipe，讓模型偵測到直播影片中的物件，如下圖MediaPipe在影片中偵測到許多人 (person)，因此用許多綠框框出，且綠框會跟著物件移動。(影片連結: <a href = "https://www.youtube.com/watch?v=v9rQqa_VTEY" target = "_blank">https://www.youtube.com/watch?v=v9rQqa_VTEY </a>)</h5>
+                        <img src="..\attached_assets\033.png" class ="main-card-img" alt="作品1" />
+                        <button class="btn btn-link p-0 toggle-btn">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <!-- 展開內容區塊 -->
+                        <div class="more-content" style="display: none;">
+                            <h5 class="card-subtitle mt-3">加深加廣時間！</h5>
+                            <div class="mb-2">
+                                <h6 class="task-title mb-1">Task: 同時呈現多個影片偵測結果</h6>
+                                <p>另一影片連結: <a href = "https://www.youtube.com/watch?v=XUWjAsajKXg" target ="_blank">https://www.youtube.com/watch?v=XUWjAsajKXg</a> </p>
+                                <img src="..\attached_assets\034.png" class = "card-img-right" alt="作品1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">影像去背</h3>
+                        <h5 class="card-text text-muted">使用VideoCapture開啟照相機後，MediaPipe中的Selfie Segmentation 模組便會開始偵測人物位置，並即時進行「人像分割」，利用遮罩 (mask) 將人從背景中分離出來，並替換背景為黑色畫面。</h5>
+                        <img src="..\attached_assets\041.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">將背景置換成圖</h3>
+                        <h5 class="card-text text-muted">多生成一張背景為指定圖片的畫面，就像平常使用google meeting的去背效果了！實際結果如下圖所示。</h5>
+                        <img src="..\attached_assets\042.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">按指定按鈕顯示不同背景與效果</h3>
+                        <h5 class="card-text text-muted">我們可以在程式中設定幾個指定按鈕以更換不同背景圖片，也能針對某張背景圖提高其模糊度。以下圖為例，我設定按1, 2, 3按鈕會分別顯示三種背景圖，若按b按鈕則會讓圖片變模糊，按越多b圖片會變越模糊。<br>
+                            （FPS為每秒影格數 (Frames Per Second)，表示程式每秒能夠處理和顯示多少張畫面。FPS越高表示畫面越流暢。）</h5>
+                        <img src="..\attached_assets\0431.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\0432.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\0433.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\0434.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\0435.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">臉部器官偵測</h3>
+                        <h5 class="card-text text-muted">利用MediaPipe的Face Detection模型偵測臉部各器官的定位點，包含眼睛、鼻子、嘴巴及耳朵，並用一黑框框起臉部範圍，如下圖所示。</h5>
+                        <img src="..\attached_assets\051.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">於器官點加上各種幾何圖形</h3>
+                        <h5 class="card-text text-muted">我們進階在臉部的器官定位點上加上各種顏色的幾何圖形或框線，像是圓形、長方形、半圓形等，如下圖所示。</h5>
+                        <img src="..\attached_assets\0521.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\0522.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">人臉標記點圖</h3>
+                        <h5 class="card-text text-muted">我們利用MediaPipe 的 FaceMesh 模組偵測人臉上的 468 個標記點（landmarks），並把這些點用三角網格（Tessellation）方式顯示在照相機拍攝出的人臉影像上。</h5>
+                        <img src="..\attached_assets\061.png" class ="main-card-img" alt="作品1" />
+                        <button class="btn btn-link p-0 toggle-btn">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <!-- 展開內容區塊 -->
+                        <div class="more-content" style="display: none;">
+                            <h5 class="card-subtitle mt-3">加深加廣時間！</h5>
+                            <div class="mb-2">
+                                <h6 class="task-title mb-1">Task: 更換臉部以外區域顏色以及三角網格線條顏色</h6>
+                                <p>我們可以改變將臉部以外的區域顏色，同時保有臉部的三角網格。此外，我們也可更換三角網格的點及線之顏色。</p>
+                                <img src="..\attached_assets\062.png" class = "card-img-right" alt="作品1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">同時顯示鏡像畫面，且兩個臉部的三角網格顏色可不為相同。</h3>
+                        <img src="..\attached_assets\0631.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\0632.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">在某個器官點加上圖片</h3>
+                        <h5 class="card-text text-muted">下圖是在嘴巴上加上一個「嘴唇」照片。</h5>
+                        <img src="..\attached_assets\0641.png" class ="main-card-img" alt="作品1" />
+                        <button class="btn btn-link p-0 toggle-btn">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <!-- 展開內容區塊 -->
+                        <div class="more-content" style="display: none;">
+                            <h5 class="card-subtitle mt-3">加深加廣時間！</h5>
+                            <div class="mb-2">
+                                <h6 class="task-title mb-1">Task 1: 圖片隨著器官的縮放改變大小</h6>
+                                <p>以下圖為例，當影像中的嘴巴張大或縮小，「嘴唇」圖片也會跟著放大或縮小。</p>
+                                <img src="..\attached_assets\0642.png" class = "card-img-right" alt="作品1" />
+                            </div>
+                            <div class="mb-2">
+                                <h6 class="task-title mb-1">Task 2: 可以同時偵測多個臉部</h6>
+                                <p>我們可以設定一影像中最多能偵測到多少臉部。</p>
+                                <img src="..\attached_assets\0643.png" class = "card-img-right" alt="作品1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">全身骨架偵測</h3>
+                        <h5 class="card-text text-muted">我們使用 MediaPipe 的 Pose 模組，實現即時全身骨架偵測與繪圖。其模組可以偵測出人體的關節位置（如肩膀、手肘、膝蓋等），並在攝影機畫面中畫出骨架連線。</h5>
+                        <img src="..\attached_assets\071.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">影片人物動作偵測</h3>
+                        <h5 class="card-text text-muted">我們可以透過指定欲分析影片，讓Pose模組偵測影片中人物的動作，並也以骨架連線的方式呈現動態動作畫面。</h5>
+                        <img src="..\attached_assets\072.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">YouTube影片人物動作偵測</h3>
+                        <h5 class="card-text text-muted">我們也可以再次使用yt_dlp套件下載YouTube影片後進行人物動作的偵測與分析。<br>
+                            (影片連結: <a href = "https://www.youtube.com/watch?v=FN9DIn1ZB8M" target = "_blank">https://www.youtube.com/watch?v=FN9DIn1ZB8M</a>、<a href = "https://youtu.be/-91vymvIH0c?si=_S5yoLgWNVAMzrvF" target = "_blank">https://youtu.be/-91vymvIH0c?si=_S5yoLgWNVAMzrvF</a>)</h5>
+                        <img src="..\attached_assets\0731.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\0732.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">手臂運動遊戲</h3>
+                        <h5 class="card-text text-muted">我們可以透過MediaPipe 的 Pose 模組偵測全身骨架的運動，也可用以計算手臂彎曲程度。透過計算手臂彎曲夾角辨識此人是否有確實做到手臂彎曲運動，若有達到預設要求便可讓此手臂獲得分數！</h5>
+                        <img src="..\attached_assets\074.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">偵測手部指節定位點</h3>
+                        <h5 class="card-text text-muted">我們使用MediaPipe 的 Hands 進行手部偵測與關節點繪製，最多可偵測兩隻手，並標示手指的關鍵點與連線。無論是顯示手心或手背都能偵測到關節點並連線。</h5>
+                        <img src="..\attached_assets\0811.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\0812.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">手指觸碰圖形遊戲</h3>
+                        <h5 class="card-text text-muted">我們可以設定當任一手的哪個位置點碰到影像中的長方框時便能得分，像是可以設定食指指尖、或是小拇指等；而長方框會在每次點到後更換至影像範圍內的隨機位置。</h5>
+                        <img src="..\attached_assets\0821.png" class ="main-card-img" alt="作品1" />
+                        <button class="btn btn-link p-0 toggle-btn">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <!-- 展開內容區塊 -->
+                        <div class="more-content" style="display: none;">
+                            <h5 class="card-subtitle mt-3">加深加廣時間！</h5>
+                            <div class="mb-2">
+                                <h6 class="task-title mb-1">Task: 改變長方框顏色</h6>
+                                <p>每當點到長方框後，長方框便會自動改變成隨機的顏色。</p>
+                                <img src="..\attached_assets\0822.png" class = "card-img-right" alt="作品1" />
+                                <img src="..\attached_assets\0823.png" class = "card-img-right" alt="作品1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">手勢辨識系統</h3>
+                        <h5 class="card-text text-muted">利用 MediaPipe的 Hands 模型和幾何角度計算方法來判斷特定手勢（如比讚、OK、數字、搖滾手勢等），並以文字表示各手勢的意義為何。</h5>
+                        <img src="..\attached_assets\0911.png" class ="main-card-img" alt="作品1" />
+                        <button class="btn btn-link p-0 toggle-btn">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <!-- 展開內容區塊 -->
+                        <div class="more-content" style="display: none;">
+                            <h5 class="card-subtitle mt-3">加深加廣時間！</h5>
+                            <div class="mb-2">
+                                <h6 class="task-title mb-1">Task: 當對鏡頭比中指時，會出現「no!!!」字樣，並會翻轉且模糊畫面。</h6>
+                                <img src="..\attached_assets\0912.png" class = "card-img-right" alt="作品1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">手勢辨識器模型</h3>
+                        <h5 class="card-text text-muted">這次我們使用MediaPipe 中的Tasks API ─ 官方新版高階模型，不需自行計算關節角度便能直接輸出辨識手勢的名稱與信心分數。可辨識的手勢包含👍(Thumb_Up), 👎(Thumb_Down), ✌️(Victory), ☝️(Pointing_Up), ✊(Closed_Fist), 👋(Open_Palm) 與 🤟(ILoveYou)。</h5>
+                        <img src="..\attached_assets\0921.png" class ="main-card-img" alt="作品1" />
+                        <button class="btn btn-link p-0 toggle-btn">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <!-- 展開內容區塊 -->
+                        <div class="more-content" style="display: none;">
+                            <h5 class="card-subtitle mt-3">加深加廣時間！</h5>
+                            <div class="mb-2">
+                                <h6 class="task-title mb-1">Task: 分辨左右手各自的手勢及信心分數</h6>
+                                <p>每當點到長方框後，長方框便會自動改變成隨機的顏色。</p>
+                                <img src="..\attached_assets\0922.png" class = "card-img-right" alt="作品1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="mp">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">物件偵測</h3>
+                        <h5 class="card-text text-muted">我們先在Teachable Machine訓練好專屬的物件辨識模型，並匯出成 TensorFlow Keras 模型（.h5 格式） ，以在Python上建立屬於自己的物件偵測模型。我所訓練辨識的物件為手機、水瓶、滑鼠與錢包。</h5>
+                        <img src="..\attached_assets\0931.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\0932.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\0933.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\0934.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="tm">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">Teachable Machine 影像辨識</h3>
+                        <h5 class="card-text text-muted">這是透過 Teachable Machine 訓練的模型，按下開始即可開啟鏡頭辨識畫面。</h5>
+                        <!-- 啟動模型按鈕 -->
+                        <button class="btn btn-primary btn-narrow fs-3" onclick="init()">開始辨識</button>
+                        <!-- 顯示鏡頭畫面與辨識結果 -->
+                        <div id="webcam-container" class="mb-2"></div>
+                        <div id="label-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="stream">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">使用 Streamlit 快速建立互動式網頁應用程式（Web App），並結合 OpenCV 的VideoCapture 方法來即時顯示攝影機畫面</h3>
+                        <img src="..\attached_assets\1001.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="stream">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">使用 Streamlit 結合yt_dlp下載 YouTube 影片，並利用 MediaPipe 物件偵測模型進行即時辨識</h3>
+                        <img src="..\attached_assets\1002.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="sllm">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">Gemma3 純文字 LLM 應用範例</h3>
+                        <h5 class="card-text text-muted">使用 Streamlit 和 Ollama 提供的本地 LLM 模型 ─ gemma3:1b，建立一個簡單的文字聊天網頁應用程式。</h5>
+                        <img src="..\attached_assets\1101.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="sllm">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">Gemma3 文字語音LLM TTS應用範例</h3>
+                        <h5 class="card-text text-muted">使用 Streamlit 建立互動網頁後，利用 Ollama 提供的本地 LLM 模型 ─ gemma3:1b回答問題，並使用gTTS將模型回答的文字轉語音（TTS），讓使用者可以播放回答內容之音檔。</h5>
+                        <img src="..\attached_assets\1102.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="sllm">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">Gemma3 多模態 LLM 應用範例</h3>
+                        <h5 class="card-text text-muted">使用能支援多模態輸入的LLM模型 ─  gemma3:4b，讓使用者能夠上傳圖片以和LLM模型對話。</h5>
+                        <img src="..\attached_assets\1103.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">確認是否成功取得GEMINI_API_KEY並列印</h3>
+                        <img src="..\attached_assets\1201.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">用matplotlib製作圖表：LLM發展歷程（英／中）</h3>
+                        <img src="..\attached_assets\12021.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\12022.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">開始使用OpenAI</h3>
+                        <img src="..\attached_assets\1204.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">分析輸入的圖片</h3>
+                        <img src="..\attached_assets\1205.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">影像生成</h3>
+                        <img src="..\attached_assets\12061.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\12062.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">音訊生成</h3>
+                        <img src="..\attached_assets\12071.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\12072.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">使用伺服器發送事件來串流模型回應</h3>
+                        <img src="..\attached_assets\1208.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">讀取檔案與安裝PyTorch</h3>
+                        <img src="..\attached_assets\1301.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">Regular expression</h3>
+                        <img src="..\attached_assets\1302.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">將 token 轉換為 token ID</h3>
+                        <img src="..\attached_assets\13031.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\13032.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">新增特殊內容標記</h3>
+                        <img src="..\attached_assets\1304.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">BytePair編碼</h3>
+                        <img src="..\attached_assets\1305.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">使用滑動視窗進行資料取樣</h3>
+                        <img src="..\attached_assets\1306.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">建立 token embedding 嵌入層</h3>
+                        <img src="..\attached_assets\1307.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">編碼單詞位置</h3>
+                        <img src="..\attached_assets\1308.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">同時建立兩種大語言模型（Gemini + OpenAI GPT），測試連線與基本問答功能</h3>
+                        <img src="..\attached_assets\1401.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">用 Gemini Flash 模型打一個中文問候，然後用不同方式印出回應</h3>
+                        <img src="..\attached_assets\1402.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">用 GPT-3.5-Turbo 回應一個中文問候，然後印出結果（好幾種不同方式）</h3>
+                        <img src="..\attached_assets\14031.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\14032.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">練習用一次送出多個問題（batch）讓 AI 回答</h3>
+                        <img src="..\attached_assets\14041.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\14042.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">練習 Gemini 語言模型的 stream 即時回答功能</h3>
+                        <img src="..\attached_assets\14051.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\14052.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">MemoryCache : 可以即問即答的小問答機</h3>
+                        <img src="..\attached_assets\14061.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\14062.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">「問一題、問一組題目，並且順便記錄 token 消耗」的小實驗</h3>
+                        <img src="..\attached_assets\1407.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">使用 BERT 預訓練模型與 tokenizer</h3>
+                        <img src="..\attached_assets\1501.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">TF-IDF（詞頻-逆文獻頻率）分析</h3>
+                        <img src="..\attached_assets\1502.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">中文文件相似度計算範例</h3>
+                        <img src="..\attached_assets\1503.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">TF-IDF 向量 + 餘弦相似度</h3>
+                        <img src="..\attached_assets\1504.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">熱力圖 (heatmap) +中文視覺化</h3>
+                        <img src="..\attached_assets\15051.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\15052.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">非同步 Token 計算與串流輸出</h3>
+                        <img src="..\attached_assets\1506.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">LangChain 自定工具（Tool）呼叫</h3>
+                        <h5 class="card-text text-muted">GEMINI</h5>
+                        <img src="..\attached_assets\15071.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\15072.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\15073.png" class ="main-card-img" alt="作品1" />
+                        <h5 class="card-text text-muted">OpenAI</h5>
+                        <img src="..\attached_assets\15074.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\15075.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\15076.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">Streamlit - 車輛法規RAG問答系統</h3>
+                        <img src="..\attached_assets\15081.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\15082.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\15083.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">命令列介面 (CLI) 的問答系統</h3>
+                        <img src="..\attached_assets\15091.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\15092.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 portfolio-item" data-category="ai">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">Web 文件總結系統</h3>
+                        <img src="..\attached_assets\1510.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 portfolio-item" data-category="neo">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">在Neo4j圖形資料庫建立實例 (Instance)</h3>
+                        <img src="..\attached_assets\16011.png" class ="main-card-img" alt="作品1" />
+                        <img src="..\attached_assets\16012.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 portfolio-item" data-category="neo">
+                <div class="card custom-card shadow-sm d-flex flex-row p-0">
+                    <div class="card-body">
+                        <h3 class="card-title">Neo4j專案結構</h3>
+                        <h5 class="card-text text-muted">1. 設定環境（config.py）<br>
+                            2. 匯入電影知識圖譜（graph_setup.py）<br>
+                            3. 建立向量資料庫（vector_setup.py）<br>
+                            4. 問答鏈建構（qa_chain.py）<br>
+                            5. 建立 LangChain 工具（tools.py）<br>
+                            6. 整合 Agent（agent_runner.py）<br>
+                            7. 執行主程式（main.py）：使用者可詢問關於資料庫內容的問題。</h5>
+                        <img src="..\attached_assets\1602.png" class ="main-card-img" alt="作品1" />
+                    </div>
+                </div>
+            </div>
+
+		</div>
+	</div>
+
+	<!-- 頁尾 -->
+	<footer class="bg-dark text-light text-center py-3 mt-5">
+		<div class="container">
+			<p class="mb-0">© 2025 洪翊嘉 | 所有權利保留</p>
+		</div>
+	</footer>
+
+	<!-- Bootstrap JS + 篩選功能 + 展開按鈕 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+		// 1. 篩選功能
+		const filterButtons = document.querySelectorAll(".filter-btn");
+		const items = document.querySelectorAll(".portfolio-item");
+
+	    filterButtons.forEach(btn => {
+		    btn.addEventListener("click", () => {
+			    // 移除所有按鈕 active 樣式，再加到當前按鈕
+			    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+			    btn.classList.add("active");
+
+			    const category = btn.getAttribute("data-filter");
+
+			    // 顯示符合類別的卡片，其餘隱藏
+			    items.forEach(item => {
+				    item.style.display = item.getAttribute("data-category") === category ? "block" : "none";
+			    });
+		    });
+	    });
+
+	    // 2. 預設點擊第一個分類（載入頁面時）
+	    window.addEventListener("DOMContentLoaded", () => {
+		    const firstBtn = document.querySelector(".filter-btn");
+		    if (firstBtn) firstBtn.click();
+	    });
+
+	    // 3. 卡片展開/收合功能
+
+		document.querySelectorAll('.toggle-btn').forEach(btn => {
+		    btn.addEventListener('click', () => {
+		        const cardBody = btn.closest('.card-body');
+		        const moreContent = cardBody.querySelector('.more-content');
+		        const icon = btn.querySelector('i');
+
+		        if (moreContent.style.display === 'none') {
+			        moreContent.style.display = 'block';
+			        icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+		        } else {
+			        moreContent.style.display = 'none';
+			        icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+		        }
+	        });
+        });
+
+	</script>
+
+<!-- Teachable Machine 所需 JS -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
+<script type="text/javascript">
+    const URL = "https://teachablemachine.withgoogle.com/models/c6tpgoQf-/";
+    let model, webcam, labelContainer, maxPredictions;
+
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        const flip = true;
+        webcam = new tmImage.Webcam(200, 200, flip);
+        await webcam.setup();
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        labelContainer = document.getElementById("label-container");
+        labelContainer.innerHTML = ""; // 清空避免重複新增
+        for (let i = 0; i < maxPredictions; i++) {
+            labelContainer.appendChild(document.createElement("div"));
+        }
+    }
+
+    async function loop() {
+        webcam.update();
+        await predict();
+        window.requestAnimationFrame(loop);
+    }
+
+    async function predict() {
+        const prediction = await model.predict(webcam.canvas);
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
+    }
+</script>
+
+</body>
+</html>
+
+

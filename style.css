@@ -1,46 +1,194 @@
-html {
-  height: 100%;
-  width: 100%;
-  background-color: #e6f7ff; /* Light blue background */
-}
-
-#about .section-box {
-  border: none; /* No border for "關於我" */
-}
-
-#about p {
-  text-align: left;
-  font-size: 18px; /* Larger font size */
-}
-
-.section-box {
-  border: 2px solid #0097FB; 
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 20px;
-
-  /* Bouncing effect only on hover */
-  transition: transform 0.2s;
-}
-
-.section-box:hover {
-  transform: translateY(-10px);
-}
-
-h3 {
-  color: #005f99; /* Darker blue for headings */
-  padding-left: 5px; /* Padding to simulate bullet point */
-}
-
 .navbar {
-  background-color: #b3e0ff !important; /* Light blue navbar */
+  background-color: #01579b !important;
+}
+/* 背景與字型設定 */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #e0f7ff; /* 水藍色底 */
+  scroll-behavior: smooth;
+  text-align: center;
 }
 
-.profile-picture {
-  width: 150px; /* Adjusted to a smaller size */
-  height: 150px;
+/* 頁首區域 */
+header {
+  background: linear-gradient(to right, #e1f5fe, #81d4fa); /* 更清新的藍色 */
+  color: #003f5c;
+  padding: 100px 0 60px;
+  text-align: center;
+}
+
+/* 個人頭貼樣式 */
+.profile-img {
+  width: 300px;
+  height: 300px;
   object-fit: cover;
   border-radius: 50%;
-  float: right;
-  margin: 20px;
+  border: 4px solid white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #0277bd;
+}
+
+/* 區塊間距 */
+section {
+  padding: 80px 0;
+}
+
+/* icon 區塊 */
+.icon-box i {
+  font-size: 2rem;
+  color: #0288d1;
+  margin-bottom: 10px;
+}
+
+/* 圖片樣式 */
+.portfolio-item img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease;
+}
+
+
+/* footer */
+footer {
+  background-color: #01579b;
+  color: white;
+  padding: 20px 0;
+}
+/* 固定頁尾在最下方 */
+html, body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+body {
+	margin: 0;
+}
+
+main {
+	flex: 1;
+}
+
+/* 表單欄位美化 */
+form input, form textarea {
+  text-align: center;
+}
+
+form button {
+  margin-top: 10px;
+}
+
+/* 等寬排列容器 */
+.row.equal-space > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 卡片統一高度 */
+.portfolio-item {
+  height: 100%;
+}
+
+/* 每一列之間間距 */
+.row.g-4, .row.g-6 {
+  justify-content: center;
+}
+
+.custom-card img.main-card-img {
+	width: auto;
+	max-width: 40%;
+	height: auto;
+	max-height: 250px;
+	object-fit: contain;
+	border-radius: 0.375rem;
+	display: block;
+	align-self: flex-start;
+}
+
+.custom-card .card-body {
+	width: auto;
+	padding: 1rem 1.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: left;
+}
+
+.custom-card {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	min-height: 200px;
+	overflow: hidden;
+	border-radius: 0.5rem;
+}
+
+.custom-card .card-img-right {
+	width: auto;
+	height: auto;
+	object-fit: contain;
+	border-top-right-radius: 0.375rem;
+	border-bottom-right-radius: 0.375rem;
+	max-width: 40%;
+	max-height: 250px;
+}
+
+.card-title {
+	color: #0d6efd; /* Bootstrap 藍色 */
+	font-weight: bold;
+	font-size: 2.5rem;
+}
+
+.card-subtitle {
+	font-size: 2rem;
+	color: #dc3545; /* Bootstrap 紅色 */
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.task-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.more-content h5,
+.more-content h6 {
+	text-align: left;
+}
+
+.more-content a {
+	word-break: break-all;
+}
+
+.toggle-btn {
+	align-self: flex-start;
+}
+
+#webcam-container canvas {
+    border-radius: 0.5rem;
+    margin-top: 10px;
+    max-width: 100%;
+}
+
+.btn-narrow {
+	width: 250px;
+	height: 60px;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 }

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>AI體感穿搭與妝容推薦平台</title>
+	<style>
+		body {
+			font-family: "Microsoft JhengHei", sans-serif;
+			background-color: #f7fafd;
+			margin: 0;
+			padding: 0;
+			color: #333;
+		}
+		header {
+			text-align: center;
+			padding: 2rem 1rem;
+			font-size: 1.8rem;
+			font-weight: bold;
+			color: #1c1c1c;
+		}
+		.section {
+			max-width: 1000px;
+			margin: auto;
+			background: #ffffff;
+			border-radius: 1rem;
+			padding: 2rem;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+		}
+		.tool-section {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 2rem;
+			margin-bottom: 3rem;
+		}
+		.tool {
+			flex: 1 1 45%;
+		}
+		.tool canvas, .tool video {
+			width: 100%;
+			border-radius: 0.5rem;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+		}
+		.tool h2 {
+			font-size: 1.4rem;
+			margin-bottom: 0.5rem;
+			color: #1a1a1a;
+		}
+		.description {
+			margin-top: 0.5rem;
+			font-size: 1rem;
+			color: #555;
+		}
+		.suggestion {
+			margin-top: 1rem;
+		}
+		.emoji-box {
+			background: #fffbea;
+			border-left: 4px solid #ffcc00;
+			padding: 1rem;
+			border-radius: 0.5rem;
+			font-size: 1.1rem;
+		}
+		#error-msg {
+			color: red;
+			margin-top: 1rem;
+			font-weight: bold;
+		}
+		header .container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.main-card-img {
+			width: 120px; /* 可以依需要調整大小 */
+			margin-bottom: 1rem;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<img src="..\attached_assets\body-scan.png" alt="logo" class="main-card-img">
+			<h1>AI體感穿搭與妝容推薦平台</h1>
+		</div>
+	</header>
+
+	<section class="section">
+		<div class="tool-section">
+			<div class="tool">
+				<h2>妝容建議工具</h2>
+				<video id="video1" autoplay muted playsinline></video>
+				<div class="description">使用臉部特徵（臉型、眉形、膚色等）推薦妝容與美妝產品。</div>
+				<div class="suggestion">
+					💄 唇彩、粉底、修容、眼影、腮紅建議
+				</div>
+				<div id="error1" class="error-msg"></div>
+			</div>
+			<div class="tool">
+				<h2>妝容掃描結果</h2>
+				<canvas id="canvas1"></canvas>
+			</div>
+			<div class="emoji-box">
+			😊 看起來您喜歡這個穿搭／妝容建議的，還有什麼需要我幫忙的嗎？
+			</div>
+		</div>
+
+		<div class="tool-section">
+			<div class="tool">
+				<h2>穿搭建議神器</h2>
+				<video id="video2" autoplay muted playsinline></video>
+				<div class="description">穿搭比例偵測與風格建議，提升整體造型美感。</div>
+				<div id="error2" class="error-msg"></div>
+			</div>
+			<div class="tool">
+				<h2>穿搭掃描結果</h2>
+				<canvas id="canvas2"></canvas>
+			</div>
+			<div class="emoji-box">
+			😊 看起來您不太喜歡這種風格，讓我提供其他建議！
+			</div>
+		</div>
+
+	</section>
+
+	<script type="module">
+		import * as faceMesh from "https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633559617/face_mesh.js";
+		import * as pose from "https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5/pose.js";
+		import { Camera } from "https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js";
+
+		const video1 = document.getElementById("video1");
+		const canvas1 = document.getElementById("canvas1");
+		const ctx1 = canvas1.getContext("2d");
+		const error1 = document.getElementById("error1");
+
+		const video2 = document.getElementById("video2");
+		const canvas2 = document.getElementById("canvas2");
+		const ctx2 = canvas2.getContext("2d");
+		const error2 = document.getElementById("error2");
+
+		function showCameraError(msg, el) {
+			el.textContent = `⚠️ ${msg} 請確認已允許攝影機權限，或使用 http(s) 網址開啟本頁面。`;
+		}
+
+		try {
+			const fm = new faceMesh.FaceMesh({ locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}` });
+			fm.setOptions({ maxNumFaces: 1, refineLandmarks: true, minDetectionConfidence: 0.5, minTrackingConfidence: 0.5 });
+			fm.onResults((results) => {
+				canvas1.width = video1.videoWidth;
+				canvas1.height = video1.videoHeight;
+				ctx1.drawImage(results.image, 0, 0, canvas1.width, canvas1.height);
+				if (results.multiFaceLandmarks) {
+					for (const landmarks of results.multiFaceLandmarks) {
+						ctx1.fillStyle = "#00FF00";
+						landmarks.forEach(p => ctx1.fillRect(p.x * canvas1.width, p.y * canvas1.height, 2, 2));
+					}
+				}
+			});
+			const cam1 = new Camera(video1, {
+				onFrame: async () => await fm.send({ image: video1 }),
+				width: 400,
+				height: 500
+			});
+			cam1.start();
+		} catch (err) {
+			showCameraError("妝容建議工具無法啟動攝影機。", error1);
+		}
+
+		try {
+			const ps = new pose.Pose({ locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}` });
+			ps.setOptions({ modelComplexity: 1, smoothLandmarks: true, enableSegmentation: false, minDetectionConfidence: 0.5, minTrackingConfidence: 0.5 });
+			ps.onResults((results) => {
+				canvas2.width = video2.videoWidth;
+				canvas2.height = video2.videoHeight;
+				ctx2.drawImage(results.image, 0, 0, canvas2.width, canvas2.height);
+				if (results.poseLandmarks) {
+					ctx2.fillStyle = "#FF0000";
+					results.poseLandmarks.forEach(p => ctx2.fillRect(p.x * canvas2.width, p.y * canvas2.height, 3, 3));
+				}
+			});
+			const cam2 = new Camera(video2, {
+				onFrame: async () => await ps.send({ image: video2 }),
+				width: 400,
+				height: 500
+			});
+			cam2.start();
+		} catch (err) {
+			showCameraError("穿搭建議工具無法啟動攝影機。", error2);
+		}
+	</script>
+</body>
+</html>
+
